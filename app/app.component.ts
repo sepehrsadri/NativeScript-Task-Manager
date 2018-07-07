@@ -14,6 +14,8 @@ export class AppComponent {
 
 	constructor(private userService: UserService) {
 		this.user = new User();
+		this.user.email = "sepehrsadri@gmail.com";
+		this.user.password = "password";
 	}
 
 	submit() {
