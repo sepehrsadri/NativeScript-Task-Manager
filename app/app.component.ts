@@ -8,14 +8,14 @@ import { User } from "./shared/user/user";
 })
 export class AppComponent {
 	user: User;
-	email: string = "sepehrsadri@gmail.com";
+	// email: string = "sepehrsadri@gmail.com";
 	isLoggingIn = true;
 
 	constructor() {
 		this.user = new User();
 	}
 	submit() {
-		alert("you are using this email : " + this.email);
+		alert("you are using this email : " + this.user.email);
 	}
 	toggleDisplay() {
 		this.isLoggingIn = !this.isLoggingIn;
