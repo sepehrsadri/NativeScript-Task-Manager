@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { User } from "./shared/user/user";
 
 @Component({
 	selector: "my-app",
@@ -6,13 +7,20 @@ import { Component } from "@angular/core";
 	styleUrls: ['app.component.common.css', 'app.component.css']
 })
 export class AppComponent {
+	user: User;
 	email: string = "sepehrsadri@gmail.com";
-	isLoggingIn: boolean = true;
+	isLoggingIn = true;
+
+	constructor() {
+		this.user = new User();
+	}
 	submit() {
 		alert("you are using this email : " + this.email);
-
-
 	}
+	toggleDisplay() {
+		this.isLoggingIn = !this.isLoggingIn;
+	}
+
 
 
 }
