@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 
 
 
+
 @NgModule({
 	imports: [
 		NativeScriptModule,

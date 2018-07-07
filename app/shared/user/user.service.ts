@@ -24,6 +24,7 @@ export class UserService {
 		)
 			.catch(this.handleErrors);
 	}
+
 	getCommonHeaders() {
 		let headers = new Headers();
 		headers.append("Content-Type", "application/json");
@@ -35,5 +36,4 @@ export class UserService {
 		console.log(JSON.stringify(error.json()));
 		return Observable.throw(error);
 	}
-
 }
