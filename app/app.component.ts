@@ -10,7 +10,6 @@ import { UserService } from "./shared/user/user.service";
 })
 export class AppComponent {
 	user: User;
-	// email: string = "sepehrsadri@gmail.com";
 	isLoggingIn = true;
 
 	constructor(private userService: UserService) {
@@ -24,8 +23,6 @@ export class AppComponent {
 		else {
 			this.signUp();
 		}
-
-		// alert("you are using this email : " + this.user.email);
 	}
 	login() {
 
