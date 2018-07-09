@@ -4,7 +4,7 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { AppComponent } from "./app.component";
-import { routes } from "./app.routing";
+import { navigatableComponents, routes } from "./app.routing";
 
 
 

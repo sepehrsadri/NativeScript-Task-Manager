@@ -5,8 +5,8 @@ import { UserService } from "../../shared/user/user.service";
 @Component({
 	providers: [UserService],
 	selector: "my-app",
-	templateUrl: 'app.component.html',
-	styleUrls: ['app.component.common.css', 'app.component.css']
+	templateUrl: './pages/login/login.component.html',
+	styleUrls: ['./pages/login/login.component.common.css', './pages/login/login.component.css']
 })
 export class LoginComponent {
 	user: User;
