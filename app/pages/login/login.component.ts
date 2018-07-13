@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { User } from '../../shared/user/user';
 import { UserService } from "../../shared/user/user.service";
 
+
 @Component({
 	providers: [UserService],
 	selector: "my-app",
