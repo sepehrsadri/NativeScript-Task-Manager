@@ -1,8 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
+import { Color } from "color";
+import { View } from "ui/core/view";
 import { Page } from 'ui/page';
 import { User } from '../../shared/user/user';
 import { UserService } from "../../shared/user/user.service";
+
+
 
 
 @Component({
@@ -14,6 +18,7 @@ import { UserService } from "../../shared/user/user.service";
 export class LoginComponent implements OnInit {
 	user: User;
 	isLoggingIn = true;
+	@ViewChild("container") container: ElementRef;
 	ngOnInit() {
 		this.page.actionBarHidden = true;
 		this.page.backgroundImage = "res://bg_login";
@@ -52,6 +57,11 @@ export class LoginComponent implements OnInit {
 	}
 	toggleDisplay() {
 		this.isLoggingIn = !this.isLoggingIn;
+		let container = <View>this.container.nativeElement;
+		container.animate({
+			backgroundColor: this.isLoggingIn ? new Color("white") : new Color("#301217"),
+			duration: 200
+		});
 	}
 
 
