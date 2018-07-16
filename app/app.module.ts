@@ -8,6 +8,7 @@ import { navigatableComponents, routes } from "./app.routing";
 
 
 
+
 @NgModule({
 	imports: [
 		NativeScriptModule,
