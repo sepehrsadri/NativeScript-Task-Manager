@@ -7,15 +7,11 @@ import { Observable } from "rxjs/Observable";
 import { Config } from "../config";
 import { User } from "./user";
 
-
-
-
-
 @Injectable()
 export class UserService {
 	constructor(private http: Http) { }
 
-	register(user: User) {
+	register(user: User): Observable<any> {
 		return this.http.post(
 			Config.apiUrl + "user/" + Config.appKey,
 			JSON.stringify({
