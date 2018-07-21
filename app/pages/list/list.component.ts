@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+
 @Component({
 
 	selector: "list",
@@ -6,4 +7,12 @@ import { Component } from "@angular/core";
 	templateUrl: "./list.component.html",
 	styleUrls: ["./list.component.common.css", "./list.component.css"]
 })
-export class ListComponent { }
+export class ListComponent implements OnInit {
+	groceryList: Array<object> = [];
+	ngOnInit() {
+		this.groceryList.push({ name: "Apples" });
+		this.groceryList.push({ name: "Oranges" });
+		this.groceryList.push({ name: "Bananas" });
+
+	}
+}

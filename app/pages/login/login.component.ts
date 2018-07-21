@@ -8,7 +8,6 @@ import { UserService } from "../../shared/user/user.service";
 
 
 
-
 @Component({
 	providers: [UserService],
 	selector: "my-app",
@@ -26,8 +25,8 @@ export class LoginComponent implements OnInit {
 
 	constructor(private router: Router, private userService: UserService, private page: Page) {
 		this.user = new User();
-		this.user.email = "sepehrsadri@gmail.com";
-		this.user.password = "password";
+		this.user.email = "ashkan";
+		this.user.password = "1234";
 	}
 
 	submit() {
@@ -57,8 +56,8 @@ export class LoginComponent implements OnInit {
 	}
 	toggleDisplay() {
 		this.isLoggingIn = !this.isLoggingIn;
-		let container = <View>this.container.nativeElement;
-		container.animate({
+		let view = <View>this.container.nativeElement;
+		view.animate({
 			backgroundColor: this.isLoggingIn ? new Color("white") : new Color("#301217"),
 			duration: 200
 		});
