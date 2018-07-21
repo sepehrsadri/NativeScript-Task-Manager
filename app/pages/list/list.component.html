@@ -1,9 +1,15 @@
-<GridLayout>
-	<ListView [items]="groceryList" class="small-spacing">
-		<ng-template let-item="item">
-			<label [text]="item.name" class="medium-spacing">
+<GridLayout rows="auto, *">
 
-			</label>
+	<GridLayout row="0" columns="*, auto" class="add-bar">
+		<TextField #groceryTextField [(ngModel)]="grocery" (returnPress)="add()" hint="Enter a grocery item" col="0"></TextField>
+		<Image src="res://add" (tap)="add()" col="1"></Image>
+
+	</GridLayout>
+
+	<ListView [items]="groceryList" row="1" class="small-spacing">
+		<ng-template let-item="item">
+			<Label [text]="item.name" class="medium-spacing"></Label>
 		</ng-template>
 	</ListView>
+
 </GridLayout>
