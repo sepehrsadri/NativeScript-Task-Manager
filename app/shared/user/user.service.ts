@@ -10,6 +10,12 @@ import { User } from "./user";
 @Injectable()
 export class UserService {
 	constructor(private http: Http) { }
+	/*
+		private http: Http;
+		constructor(httpArg: Http) {
+			this.http = httpArg;
+		}
+	*/
 
 	register(user: User): Observable<any> {
 		return this.http.post(
