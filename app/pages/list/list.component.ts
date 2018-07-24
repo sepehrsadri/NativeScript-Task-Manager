@@ -5,7 +5,6 @@ import { GroceryListService } from "../../shared/grocery/grocery-list.service";
 
 
 @Component({
-
 	selector: "list",
 	moduleId: module.id,
 	templateUrl: "./list.component.html",
@@ -13,6 +12,7 @@ import { GroceryListService } from "../../shared/grocery/grocery-list.service";
 	providers: [GroceryListService]
 })
 export class ListComponent implements OnInit {
+
 	grocery = "";
 	@ViewChild('groceryTextField') groceryTextField: ElementRef;
 	groceryList: Array<Grocery> = [];
@@ -49,5 +49,8 @@ export class ListComponent implements OnInit {
 					this.grocery = "";
 				}
 			)
+	}
+	delete() {
+		alert("do you want to delete this item?");
 	}
 }
