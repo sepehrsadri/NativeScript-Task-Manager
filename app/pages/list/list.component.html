@@ -8,7 +8,7 @@
 
 	<ListView [items]="groceryList" row="1" class="small-spacing">
 		<ng-template let-item="item">
-			<Label [text]="item.name" class="medium-spacing" (tap)="delete()"></Label>
+			<Label [text]="item.name" class="medium-spacing" (tap)="delete(item.id)"></Label>
 		</ng-template>
 	</ListView>
 

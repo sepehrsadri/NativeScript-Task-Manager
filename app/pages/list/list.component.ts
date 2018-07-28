@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { confirm } from "ui/dialogs";
 import { TextField } from 'ui/text-field';
 import { Grocery } from "../../shared/grocery/grocery";
 import { GroceryListService } from "../../shared/grocery/grocery-list.service";
-
 
 @Component({
 	selector: "list",
@@ -50,7 +50,20 @@ export class ListComponent implements OnInit {
 				}
 			)
 	}
-	delete() {
-		alert("do you want to delete this item?");
+	delete(id: string) {
+		let options = {
+			title: "Alert",
+			message: "Do you want to delete this item?",
+			okButtonText: "Yes",
+			cancelButtonText: "No",
+		};
+
+		confirm(options).then((result: boolean) => {
+			if (result) {
+				const index = this.groceryList.findIndex(e => e.id == id);
+				if (index > -1)
+					this.groceryList.splice(index, 1);
+			}
+		});
 	}
 }

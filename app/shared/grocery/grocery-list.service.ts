@@ -56,4 +56,11 @@ export class GroceryListService {
 			})
 			.catch(this.handleErrors);
 	}
+	delete(id: string) {
+		return this.http.delete(
+			this.baseUrl,
+			JSON.stringify({ Id: id }))
+			.catch(this.handleErrors);
+	}
+
 }
