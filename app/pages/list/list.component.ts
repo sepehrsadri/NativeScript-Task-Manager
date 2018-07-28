@@ -1,8 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import * as app from "application";
+import * as platform from "platform";
 import { confirm } from "ui/dialogs";
 import { TextField } from 'ui/text-field';
 import { Grocery } from "../../shared/grocery/grocery";
 import { GroceryListService } from "../../shared/grocery/grocery-list.service";
+
+declare var android;
 
 @Component({
 	selector: "list",
@@ -12,16 +16,21 @@ import { GroceryListService } from "../../shared/grocery/grocery-list.service";
 	providers: [GroceryListService]
 })
 export class ListComponent implements OnInit {
-
+	isLoading: boolean = true;
+	listLoaded: boolean = false;
 	grocery = "";
 	@ViewChild('groceryTextField') groceryTextField: ElementRef;
 	groceryList: Array<Grocery> = [];
 	ngOnInit() {
+		this.isLoading = true;
+
 		this.groceryListService.load()
 			.subscribe(loadedGroceries => {
 				loadedGroceries.forEach((groceryObject) => {
 					this.groceryList.unshift(groceryObject);
 				});
+				this.isLoading = false;
+				this.listLoaded = true;
 			});
 	}
 	constructor(private groceryListService: GroceryListService) { }
@@ -39,6 +48,8 @@ export class ListComponent implements OnInit {
 			.subscribe(
 				groceryObject => {
 					this.groceryList.unshift(groceryObject);
+					if (platform.isAndroid)
+						android.widget.Toast.makeText(app.android.context, "item successfully added", 0).show();
 					this.grocery = "";
 				},
 				() => {

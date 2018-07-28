@@ -6,10 +6,11 @@
 
 	</GridLayout>
 
-	<ListView [items]="groceryList" row="1" class="small-spacing">
+	<ListView [items]="groceryList" row="1" class="small-spacing" [class.visible]="listLoaded">
 		<ng-template let-item="item">
 			<Label [text]="item.name" class="medium-spacing" (tap)="delete(item.id)"></Label>
 		</ng-template>
 	</ListView>
-
+	<ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center"
+	 verticalAlignment="center"></ActivityIndicator>
 </GridLayout>
