@@ -17,9 +17,11 @@ export class UserService {
 		}
 	*/
 
+	private readonly apiUrl = "https://baas.kinvey.com/";
+
 	register(user: User): Observable<any> {
 		return this.http.post(
-			Config.apiUrl + "user/" + Config.appKey,
+			this.apiUrl + "user/" + Config.appKey,
 			JSON.stringify({
 				username: user.email,
 				email: user.email,
@@ -43,7 +45,7 @@ export class UserService {
 	}
 	login(user: User) {
 		return this.http.post(
-			Config.apiUrl + "user/" + Config.appKey + "/login",
+			this.apiUrl + "user/" + Config.appKey + "/login",
 			JSON.stringify({
 				username: user.email,
 				password: user.password

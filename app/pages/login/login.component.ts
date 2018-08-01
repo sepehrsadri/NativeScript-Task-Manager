@@ -35,10 +35,11 @@ export class LoginComponent implements OnInit {
 			return;
 		}
 		if (this.isLoggingIn) {
-			this.login();
+			// this.login();
+			this.router.navigate(["/list"]);
 		}
 		else {
-			this.signUp();
+			// this.signUp();
 		}
 	}
 	login() {

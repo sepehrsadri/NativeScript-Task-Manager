@@ -9,7 +9,8 @@ import { Grocery } from "./grocery";
 
 @Injectable()
 export class GroceryListService {
-	baseUrl = Config.apiUrl + "appdata/" + Config.appKey + "/Groceries";
+	// baseUrl = Config.apiUrl + "appdata/" + Config.appKey + "/Groceries";
+	baseUrl = Config.apiUrl + 'grocery'
 
 	constructor(private http: Http) { }
 
@@ -24,9 +25,9 @@ export class GroceryListService {
 		})
 			.map(res => res.json())
 			.map(data => {
-				let groceryList = [];
+				let groceryList = Array<Grocery>();
 				data.forEach((grocery) => {
-					groceryList.push(new Grocery(grocery._id, grocery.Name));
+					groceryList.push(new Grocery(grocery.id, grocery.name));
 				});
 				return groceryList;
 			})
