@@ -25,11 +25,15 @@ export class LoginComponent implements OnInit {
 
 	constructor(private router: Router, private userService: UserService, private page: Page) {
 		this.user = new User();
-		this.user.email = "ashkan";
+		this.user.email = "ashkansadri@gmail.com";
 		this.user.password = "1234";
 	}
 
 	submit() {
+		if (!this.user.isValidEmail()) {
+			alert("Enter a valid email address.");
+			return;
+		}
 		if (this.isLoggingIn) {
 			this.login();
 		}
