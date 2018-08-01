@@ -23,3 +23,7 @@ ListView {
 	from { opacity: 0; }
 	to { opacity: 1; }
   }
+  ActionBar{
+	  background-color: black;
+	  color: white;
+  }
