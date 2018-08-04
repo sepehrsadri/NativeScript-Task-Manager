@@ -59,8 +59,10 @@ export class GroceryListService {
 	}
 	delete(id: string) {
 		return this.http.delete(
-			this.baseUrl,
-			JSON.stringify({ Id: id }))
+			this.baseUrl + "/" + id,
+			{ headers: this.getCommonHeaders() }
+		)
+			.map(res => res.json())
 			.catch(this.handleErrors);
 	}
 
