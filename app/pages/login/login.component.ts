@@ -84,6 +84,13 @@ export class LoginComponent implements OnInit {
 		setHintColor({ view: emailTextField, color: hintColor });
 		setHintColor({ view: passwordTextField, color: hintColor });
 	}
+	ngAfterViewInit() {
+		console.log("afterinit");
+		setTimeout(() => {
+			console.log(this.container.nativeElement.innerText);
+		}, 100000);
+	}
+
 
 
 
