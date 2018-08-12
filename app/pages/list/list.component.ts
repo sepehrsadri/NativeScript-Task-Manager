@@ -74,7 +74,8 @@ export class ListComponent implements OnInit {
 			if (result) {
 				const index = this.groceryList.findIndex(e => e.id == id);
 				if (index > -1)
-					this.groceryList.splice(index, 1);
+					this.groceryListService.delete(id);
+				// this.groceryList.splice(index, 1);
 			}
 		});
 	}

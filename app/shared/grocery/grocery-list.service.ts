@@ -10,7 +10,7 @@ import { Grocery } from "./grocery";
 @Injectable()
 export class GroceryListService {
 	// baseUrl = Config.apiUrl + "appdata/" + Config.appKey + "/Groceries";
-	baseUrl = Config.apiUrl + 'grocery'
+	baseUrl = "http://192.168.1.38:8081/" + 'grocery'
 
 	constructor(private http: Http) { }
 
@@ -59,7 +59,7 @@ export class GroceryListService {
 	}
 	delete(id: string) {
 		return this.http.delete(
-			this.baseUrl + "/" + id,
+			this.baseUrl + "/delete" + id,
 			{ headers: this.getCommonHeaders() }
 		)
 			.map(res => res.json())
