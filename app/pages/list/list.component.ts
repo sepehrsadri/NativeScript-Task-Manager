@@ -19,6 +19,7 @@ declare var android;
 export class ListComponent implements OnInit {
 	isLoading: boolean = true;
 	listLoaded: boolean = false;
+
 	grocery = "";
 	@ViewChild('groceryTextField') groceryTextField: ElementRef;
 	groceryList: Array<Grocery> = [];
@@ -44,23 +45,37 @@ export class ListComponent implements OnInit {
 		// Dismiss the keyboard
 		let textField = <TextField>this.groceryTextField.nativeElement;
 		textField.dismissSoftInput();
+		let isOk = true;
+		for (let i: number = 0; i < this.groceryList.length; i++) {
+			var n = this.groceryList[i].name.localeCompare(this.grocery);
+			if (n == 0) {
+				alert("sorry you enter similar item!" + "please add a new one!");
+				this.grocery = "";
+				isOk = false;
+			}
+		}
+		if (isOk)
+			this.groceryListService.add(this.grocery)
+				.subscribe(
+					groceryObject => {
+						// const item of this.groceryList
 
-		this.groceryListService.add(this.grocery)
-			.subscribe(
-				groceryObject => {
-					this.groceryList.unshift(groceryObject);
-					if (platform.isAndroid)
-						android.widget.Toast.makeText(app.android.context, "item successfully added", 0).show();
-					this.grocery = "";
-				},
-				() => {
-					alert({
-						message: "An error occurred while adding an item to your list.",
-						okButtonText: "OK"
-					});
-					this.grocery = "";
-				}
-			)
+						this.groceryList.unshift(groceryObject);
+						if (platform.isAndroid)
+							android.widget.Toast.makeText(app.android.context, "item successfully added", 0).show();
+
+						this.grocery = "";
+
+
+					},
+					() => {
+						alert({
+							message: "An error occurred while adding an item to your list.",
+							okButtonText: "OK"
+						});
+						this.grocery = "";
+					}
+				)
 	}
 	delete(id: string) {
 		let options = {

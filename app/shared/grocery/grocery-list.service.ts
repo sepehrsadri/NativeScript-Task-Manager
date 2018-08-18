@@ -10,7 +10,7 @@ import { Grocery } from "./grocery";
 @Injectable()
 export class GroceryListService {
 	// baseUrl = Config.apiUrl + "appdata/" + Config.appKey + "/Groceries";
-	baseUrl = "http://192.168.1.38:8081/" + 'grocery'
+	baseUrl = "http://192.168.1.34:8081/" + 'grocery'
 
 	constructor(private http: Http) { }
 
