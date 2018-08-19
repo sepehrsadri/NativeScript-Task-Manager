@@ -57,13 +57,20 @@ export class GroceryListService {
 			})
 			.catch(this.handleErrors);
 	}
-	delete(id: string) {
-		return this.http.delete(
-			this.baseUrl + "/delete" + id,
-			{ headers: this.getCommonHeaders() }
-		)
-			.map(res => res.json())
+
+	delete(id: string): Observable<any> {
+		this.baseUrl = "http://192.168.1.34:8081/grocery/";
+		console.log(this.baseUrl + id);
+		return this.http.delete(this.baseUrl + id)
+			.map((id) => { return id; })
 			.catch(this.handleErrors);
 	}
 
+	// return fetch(this.baseUrl + id, {
+	// 	method: 'delete'
+	// }).then(response =>
+	// 	response.json().then(json => {
+	// 		return json;
+	// 	})
+	// );
 }

@@ -12,7 +12,7 @@ declare var android;
 @Component({
 	selector: "list",
 	moduleId: module.id,
-	templateUrl: "./list.component.html",
+	templateUrl: "./list.component.xml",
 	styleUrls: ["./list.component.common.css", "./list.component.css"],
 	providers: [GroceryListService]
 })
@@ -89,8 +89,18 @@ export class ListComponent implements OnInit {
 			if (result) {
 				const index = this.groceryList.findIndex(e => e.id == id);
 				if (index > -1)
-					this.groceryListService.delete(id);
+					this.groceryListService.delete(id)
+						.subscribe(
+							() => {
+								this.groceryList.splice(index, 1);
+								alert("your selected item delete!");
+							},
+							() => {
+								alert("sorry your item isn't deleted");
+							}
+						)
 				// this.groceryList.splice(index, 1);
+
 			}
 		});
 	}
