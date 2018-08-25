@@ -19,7 +19,7 @@ import { navigatableComponents, routes } from "./app.routing";
 	],
 	declarations: [
 		AppComponent,
-		...navigatableComponents
+		...navigatableComponents,
 	],
 	bootstrap: [AppComponent],
 	schemas: [NO_ERRORS_SCHEMA]
