@@ -78,6 +78,7 @@ export class ListComponent implements OnInit {
 				)
 	}
 	delete(id: string) {
+
 		let options = {
 			title: "Alert",
 			message: "Do you want to delete this item?",
@@ -104,6 +105,7 @@ export class ListComponent implements OnInit {
 			}
 		});
 	}
+
 	share() {
 		let listString = this.groceryList
 			.map(grocery => grocery.name)

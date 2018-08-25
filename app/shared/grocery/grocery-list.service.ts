@@ -48,7 +48,7 @@ export class GroceryListService {
 	add(name: string) {
 		return this.http.post(
 			this.baseUrl,
-			JSON.stringify({ Name: name }),
+			JSON.stringify({ name: name }),
 			{ headers: this.getCommonHeaders() }
 		)
 			.map(res => res.json())
