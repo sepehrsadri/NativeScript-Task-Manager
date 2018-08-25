@@ -52,8 +52,9 @@ export class GroceryListService {
 			{ headers: this.getCommonHeaders() }
 		)
 			.map(res => res.json())
+			/*map first convert to json then insetad of directly send the data of server send this data that declare it here*/
 			.map(data => {
-				return new Grocery(data._id, name);
+				return new Grocery(data.id, name);
 			})
 			.catch(this.handleErrors);
 	}
@@ -62,7 +63,10 @@ export class GroceryListService {
 		this.baseUrl = "http://192.168.1.34:8081/grocery/";
 		console.log(this.baseUrl + id);
 		return this.http.delete(this.baseUrl + id)
-			.map((id) => { return id; })
+			.map((id) => {
+				return id
+					;
+			})
 			.catch(this.handleErrors);
 	}
 

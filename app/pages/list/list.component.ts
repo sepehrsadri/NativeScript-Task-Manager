@@ -57,7 +57,7 @@ export class ListComponent implements OnInit {
 		if (isOk)
 			this.groceryListService.add(this.grocery)
 				.subscribe(
-					groceryObject => {
+					groceryObject /* The object that server returned to the client */ => {
 						// const item of this.groceryList
 
 						this.groceryList.unshift(groceryObject);
@@ -88,7 +88,11 @@ export class ListComponent implements OnInit {
 
 		confirm(options).then((result: boolean) => {
 			if (result) {
-				const index = this.groceryList.findIndex(e => e.id == id);
+				var index = this.groceryList.findIndex(e => e.id == id);
+				/* function(Grocery e):boolean {
+					return e.id==id;
+					it's like a for loop that chek for each item and if it was true take back the number of find index that used!
+				}*/
 				if (index > -1)
 					this.groceryListService.delete(id)
 						.subscribe(
@@ -96,7 +100,8 @@ export class ListComponent implements OnInit {
 								this.groceryList.splice(index, 1);
 								alert("your selected item delete!");
 							},
-							() => {
+							(err) => {
+								console.log(err);
 								alert("sorry your item isn't deleted");
 							}
 						)
