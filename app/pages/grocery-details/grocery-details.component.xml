@@ -1,4 +1,5 @@
 <StackLayout>
-	<Label class="grocery-details" text="Hello GroceryDetailsComponent!"></Label>
-	<Button [Text]="Delete" (tap)="delete()"></Button>
+	<!-- {{use for inserting some angular object}} -->
+	<Label class="grocery-details" text="{{grocery.name}}"></Label>
+
 </StackLayout>

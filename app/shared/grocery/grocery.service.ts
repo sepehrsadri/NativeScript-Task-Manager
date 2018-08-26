@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { Headers, Http, Response, URLSearchParams } from "@angular/http";
 import "rxjs/add/operator/catch";
@@ -6,13 +7,13 @@ import { Observable } from "rxjs/Observable";
 import { Config } from "~/shared/config";
 import { Grocery } from "~/shared/grocery/grocery";
 
-
 @Injectable()
+
 export class GroceryService {
 	// baseUrl = Config.apiUrl + "appdata/" + Config.appKey + "/Groceries";
 	baseUrl = "http://192.168.43.243:8081/" + 'grocery'
 
-	constructor(private http: Http) { }
+	constructor(private http: Http, private HTtp: HttpClient) { }
 
 
 	load() {
@@ -44,6 +45,7 @@ export class GroceryService {
 
 	handleErrors(error: Response) {
 		console.log(JSON.stringify(error.json()));
+		console.log("it's come here!");
 		return Observable.throw(error);
 	}
 	add(name: string) {
@@ -68,6 +70,11 @@ export class GroceryService {
 				return id
 					;
 			})
+			.catch(this.handleErrors);
+	}
+	get(id: string): Observable<any> {
+		this.baseUrl = "http://192.168.43.243:8081/grocery/";
+		return this.http.get(this.baseUrl + id)
 			.catch(this.handleErrors);
 	}
 

@@ -13,8 +13,7 @@ declare var android;
 	selector: "list",
 	moduleId: module.id,
 	templateUrl: "./list.component.xml",
-	styleUrls: ["./list.component.common.css", "./list.component.css"],
-	providers: [GroceryService]
+	styleUrls: ["./list.component.common.css", "./list.component.css"]
 })
 export class ListComponent implements OnInit {
 	isLoading: boolean = true;
@@ -78,8 +77,9 @@ export class ListComponent implements OnInit {
 				)
 	}
 	selectItem(id: string) {
-		this.router.navigate(["/grocery/:id"]);
-
+		// this.router.navigate(["/grocery/:id"]);0
+		this.router.navigate(["/grocery", id]);
+		// this._router.navigate(["/details", selectedItem.id]);
 
 
 	}
