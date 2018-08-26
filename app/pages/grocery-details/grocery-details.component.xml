@@ -1,0 +1,4 @@
+<StackLayout>
+	<Label class="grocery-details" text="Hello GroceryDetailsComponent!"></Label>
+	<Button [Text]="Delete" (tap)="delete()"></Button>
+</StackLayout>

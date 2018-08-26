@@ -5,7 +5,7 @@ import { LoginComponent } from "./pages/login/login.component";
 export const routes = [
 	{ path: "", component: LoginComponent },
 	{ path: "list", component: ListComponent },
-	{ path: "details", component: GroceryDetailsComponent }
+	{ path: "grocery/:id", component: GroceryDetailsComponent }
 ];
 
 export const navigatableComponents = [

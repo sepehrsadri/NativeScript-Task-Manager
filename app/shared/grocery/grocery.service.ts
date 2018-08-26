@@ -3,16 +3,17 @@ import { Headers, Http, Response, URLSearchParams } from "@angular/http";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
-import { Config } from "../config";
-import { Grocery } from "./grocery";
+import { Config } from "~/shared/config";
+import { Grocery } from "~/shared/grocery/grocery";
 
 
 @Injectable()
-export class GroceryListService {
+export class GroceryService {
 	// baseUrl = Config.apiUrl + "appdata/" + Config.appKey + "/Groceries";
-	baseUrl = "http://192.168.1.34:8081/" + 'grocery'
+	baseUrl = "http://192.168.43.243:8081/" + 'grocery'
 
 	constructor(private http: Http) { }
+
 
 	load() {
 		// Kinvey-specific syntax to sort the groceries by last modified time. Don’t worry about the details here.
@@ -60,7 +61,7 @@ export class GroceryListService {
 	}
 
 	delete(id: string): Observable<any> {
-		this.baseUrl = "http://192.168.1.34:8081/grocery/";
+		this.baseUrl = "http://192.168.43.243:8081/grocery/";
 		console.log(this.baseUrl + id);
 		return this.http.delete(this.baseUrl + id)
 			.map((id) => {
