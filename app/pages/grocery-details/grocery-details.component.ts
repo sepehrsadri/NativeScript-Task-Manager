@@ -23,7 +23,7 @@ export class GroceryDetailsComponent implements OnInit {
 	ngOnInit() {
 		this.groceryService.get(this.id)
 			.subscribe(groceryObject => {
-				console.log("object from server is : " + groceryObject);
+				// console.log("object from server is : " + groceryObject);
 				this.grocery = groceryObject;
 
 			},

@@ -75,6 +75,10 @@ export class GroceryService {
 	get(id: string): Observable<any> {
 		this.baseUrl = "http://192.168.43.243:8081/grocery/";
 		return this.http.get(this.baseUrl + id)
+			.map(res => res.json())
+			/* .map(data => {
+				return new Grocery(data.id, name);
+			}) */
 			.catch(this.handleErrors);
 	}
 
