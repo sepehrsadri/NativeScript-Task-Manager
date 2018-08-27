@@ -1,8 +1,14 @@
-<ActionBar title="Groceries">
-	<!-- <ActionItem text="Share" (tap)="share()" android.systemIcon="ic_menu_share_holo_dark" ios.systemIcon="9" ios.positon="right"> -->
-	<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" class="back-icon" (tap)="back()"></NavigationButton>
+<!--
+<ActionBar >
 
-</ActionBar>
+-->
+<Page.actionBar>
+	<ActionBar title="Groceries">
+		<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" class="back-icon" (tap)="back()"></NavigationButton>
+		<ActionItem android.position="popup" text="Add contact"></ActionItem>
+		<ActionItem android.position="popup" text="About"></ActionItem>
+	</ActionBar>
+</Page.actionBar>
 <StackLayout>
 	<!-- {{use for inserting some angular object}} -->
 	<Label class="grocery-details" text="{{grocery.name}}"></Label>

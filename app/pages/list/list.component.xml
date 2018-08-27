@@ -1,7 +1,10 @@
 <ActionBar title="Groceries">
-	<!-- <ActionItem text="Share" (tap)="share()" android.systemIcon="ic_menu_share_holo_dark" ios.systemIcon="9" ios.positon="right"> -->
-	<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" class="back-icon" (tap)="back()"></NavigationButton>
 
+	<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" class="back-icon" (tap)="back()"></NavigationButton>
+	<ActionItem text="Share" (tap)="share()" android.systemIcon="ic_menu_share_holo_dark" ios.systemIcon="9" ios.position="left" android.positon="actionBar">
+	</ActionItem>
+	<ActionItem text="add" ios.systemIcon="16" ios.position="right" android.positon="popup" android.systemIcon="ic_menu_add">
+	</ActionItem>
 </ActionBar>
 <GridLayout rows="auto, *">
 
