@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Grocery } from '~/shared/grocery/grocery';
@@ -14,7 +15,7 @@ import { GroceryService } from '~/shared/grocery/grocery.service';
 export class GroceryDetailsComponent implements OnInit {
 	id: string;
 	grocery: Grocery;
-	constructor(private route: ActivatedRoute, private groceryService: GroceryService) {
+	constructor(private route: ActivatedRoute, private groceryService: GroceryService, private location: Location) {
 		this.route.params.subscribe(params => this.id = params['id']);
 		this.grocery = new Grocery(null, "");
 
@@ -32,5 +33,8 @@ export class GroceryDetailsComponent implements OnInit {
 				}
 			)
 	}
+	back() {
+		this.location.back();
 
+	}
 }

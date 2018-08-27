@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from '@angular/router';
 import * as app from "application";
@@ -34,7 +35,7 @@ export class ListComponent implements OnInit {
 				this.listLoaded = true;
 			});
 	}
-	constructor(private groceryService: GroceryService, private router: Router) { }
+	constructor(private groceryService: GroceryService, private router: Router, private location: Location) { }
 	add() {
 		if (this.grocery.trim() === "") {
 			alert("Enter a grocery item");
@@ -81,6 +82,10 @@ export class ListComponent implements OnInit {
 		this.router.navigate(["/grocery", id]);
 		// this._router.navigate(["/details", selectedItem.id]);
 
+
+	}
+	back() {
+		this.location.back();
 
 	}
 	/* 	delete(id: string) {
