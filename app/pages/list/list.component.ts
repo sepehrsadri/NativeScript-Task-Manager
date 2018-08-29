@@ -26,18 +26,9 @@ export class ListComponent implements OnInit {
 
 	grocery = "";
 	@ViewChild('groceryTextField') groceryTextField: ElementRef;
-	groceryList: Array<Grocery> = [];
+	public groceryList: Array<Grocery> = [];
 	ngOnInit() {
-		this.isLoading = true;
-
-		this.groceryService.load()
-			.subscribe(loadedGroceries => {
-				loadedGroceries.forEach((groceryObject) => {
-					this.groceryList.unshift(groceryObject);
-				});
-				this.isLoading = false;
-				this.listLoaded = true;
-			});
+		this.loadData();
 	}
 	constructor(private groceryService: GroceryService, private router: Router, private location: Location) { }
 
@@ -56,30 +47,26 @@ export class ListComponent implements OnInit {
 
 	}
 
+	loadData() {
+		this.isLoading = true;
+		this.groceryService.load()
+			.subscribe(loadedGroceries => {
+				this.groceryList = loadedGroceries;
+				this.isLoading = false;
+				this.listLoaded = true;
+			});
+	}
+
 	refreshList(args) {
 		var pullRefresh = args.object;
 		this.groceryList.splice(0, this.groceryList.length);
 
-		this.groceryService.load()
-			.subscribe(loadedGroceries => {
-				loadedGroceries.forEach((groceryObject) => {
-					this.groceryList.unshift(groceryObject);
-				});
-				this.isLoading = false;
-				this.listLoaded = true;
-			});
-
-
-
-
+		this.loadData();
 
 		setTimeout(function () {
 			pullRefresh.refreshing = false;
 		}, 1000);
 	}
-
-
-
 
 	/* 	delete(id: string) {
 
