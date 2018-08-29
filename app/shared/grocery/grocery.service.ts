@@ -29,7 +29,7 @@ export class GroceryService {
 			.map(data => {
 				let groceryList = Array<Grocery>();
 				data.forEach((grocery) => {
-					groceryList.push(new Grocery(grocery.id, grocery.name, grocery.date, grocery.descripton));
+					groceryList.push(new Grocery(grocery.id, grocery.name, grocery.date, grocery.descripton, grocery.number));
 
 				});
 				return groceryList;
@@ -49,16 +49,16 @@ export class GroceryService {
 		console.log("it's come here!");
 		return Observable.throw(error);
 	}
-	add(name: string, date: Date, description: string) {
+	add(name: string, description: string, number: number) {
 		return this.http.post(
 			this.baseUrl,
-			JSON.stringify({ name: name, date: date, description: description }),
+			JSON.stringify({ name: name, description: description, number: number }),
 			{ headers: this.getCommonHeaders() }
 		)
 			.map(res => res.json())
 			/*map first convert to json then insetad of directly send the data of server send this data that declare it here*/
 			.map(data => {
-				return new Grocery(data.id, name, date, description);
+				return new Grocery(data.id, name, data.date, description, number);
 			})
 			.catch(this.handleErrors);
 	}

@@ -27,3 +27,7 @@ ListView {
 	  background-color: black;
 	  color: white;
   }
+.small-spacing{
+	background-color:#fff000;
+	color: #3489db
+}

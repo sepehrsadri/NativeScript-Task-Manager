@@ -1,11 +1,16 @@
 import { Location } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from '@angular/router';
+import { registerElement } from "nativescript-angular/element-registry";
 import * as SocialShare from "nativescript-social-share";
 import { GroceryService } from "~/shared/grocery/grocery.service";
 import { Grocery } from "../../shared/grocery/grocery";
 
+
+
 declare var android;
+
+registerElement("PullToRefresh", () => require("nativescript-pulltorefresh").PullToRefresh);
 
 @Component({
 	moduleId: module.id,
@@ -13,6 +18,7 @@ declare var android;
 	templateUrl: "./list.component.xml",
 	styleUrls: ["./list.component.common.css", "./list.component.css"]
 })
+
 export class ListComponent implements OnInit {
 	isLoading: boolean = true;
 	listLoaded: boolean = false;
@@ -49,6 +55,32 @@ export class ListComponent implements OnInit {
 		this.location.back();
 
 	}
+
+	refreshList(args) {
+		var pullRefresh = args.object;
+		this.groceryList.splice(0, this.groceryList.length);
+
+		this.groceryService.load()
+			.subscribe(loadedGroceries => {
+				loadedGroceries.forEach((groceryObject) => {
+					this.groceryList.unshift(groceryObject);
+				});
+				this.isLoading = false;
+				this.listLoaded = true;
+			});
+
+
+
+
+
+		setTimeout(function () {
+			pullRefresh.refreshing = false;
+		}, 1000);
+	}
+
+
+
+
 	/* 	delete(id: string) {
 
 			let options = {
@@ -90,4 +122,5 @@ export class ListComponent implements OnInit {
 			.trim()
 		SocialShare.shareText(listString);
 	}
+
 }

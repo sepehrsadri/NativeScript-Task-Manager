@@ -10,7 +10,6 @@ import { navigatableComponents, routes } from "./app.routing";
 
 
 
-
 @NgModule({
 	imports: [
 		NativeScriptModule,
@@ -18,7 +17,7 @@ import { navigatableComponents, routes } from "./app.routing";
 		NativeScriptHttpModule,
 		NativeScriptRouterModule,
 		NativeScriptRouterModule.forRoot(routes),
-		HttpClientModule
+		HttpClientModule,
 	],
 	declarations: [
 		AppComponent,

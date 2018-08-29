@@ -1,10 +1,10 @@
 <StackLayout>
-	<TextField hint="Item Name" autocorrect="false" autocapitalizationType="none"></TextField>
+	<TextField hint="Item Name" [(ngModel)]="grocery" autocorrect="false" autocapitalizationType="none"></TextField>
 
-	<TextField hint="Description" autocorrect="false" autocapitalizationType="none"></TextField>
-	<TextField hint="Date" autocorrect="false" autocapitalizationType="none"></TextField>
+	<TextField hint="Description" [(ngModel)]="description" autocorrect="false" autocapitalizationType="none"></TextField>
+	<TextField hint="Number" [(ngModel)]="number" autocorrect="false" autocapitalizationType="none"></TextField>
 
-
+	<Button [text]="Done" (tap)="add()" class="submit-button"></Button>
 
 
 
