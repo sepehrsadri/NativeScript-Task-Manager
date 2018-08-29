@@ -7,7 +7,7 @@ export const routes = [
 	{ path: "", component: LoginComponent },
 	{ path: "list", component: ListComponent },
 	{ path: "grocery/:id", component: GroceryDetailsComponent },
-	{ path: "grocery/add", component: GroceryAddUpdateComponent },
+	{ path: "add", component: GroceryAddUpdateComponent },
 	{ path: "grocery/:id", component: GroceryAddUpdateComponent }
 ];
 

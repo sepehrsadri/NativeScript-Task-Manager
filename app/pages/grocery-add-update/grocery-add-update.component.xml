@@ -1,0 +1,12 @@
+<StackLayout>
+	<TextField hint="Item Name" autocorrect="false" autocapitalizationType="none"></TextField>
+
+	<TextField hint="Description" autocorrect="false" autocapitalizationType="none"></TextField>
+	<TextField hint="Date" autocorrect="false" autocapitalizationType="none"></TextField>
+
+
+
+
+
+
+</StackLayout>
