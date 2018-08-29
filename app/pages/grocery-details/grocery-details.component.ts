@@ -6,7 +6,6 @@ import { GroceryService } from '~/shared/grocery/grocery.service';
 
 
 @Component({
-	moduleId: module.id,
 	selector: 'grocery-details',
 	templateUrl: './grocery-details.component.xml',
 	styleUrls: ['./grocery-details.component.css']
