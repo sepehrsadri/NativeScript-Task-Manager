@@ -49,16 +49,16 @@ export class GroceryService {
 		console.log("it's come here!");
 		return Observable.throw(error);
 	}
-	add(name: string, description: string, number: number) {
+	add(item: Grocery) {
 		return this.http.post(
 			this.baseUrl,
-			JSON.stringify({ name: name, description: description, number: number }),
+			JSON.stringify(item),
 			{ headers: this.getCommonHeaders() }
 		)
 			.map(res => res.json())
 			/*map first convert to json then insetad of directly send the data of server send this data that declare it here*/
 			.map(data => {
-				return new Grocery(data.id, name, data.date, description, number);
+				return new Grocery(data.id, name, data.date, data.description, data.number);
 			})
 			.catch(this.handleErrors);
 	}
@@ -82,17 +82,16 @@ export class GroceryService {
 			}) */
 			.catch(this.handleErrors);
 	}
-	update(name: string, description: string, number: number) {
+	update(item: Grocery): Observable<any> {
 		return this.http.put(
 			this.baseUrl,
-			JSON.stringify({ name: name, description: description, number: number }),
-			{ headers: this.getCommonHeaders() }
+			JSON.stringify(item)
 		)
 			.map(res => res.json())
 			/*map first convert to json then insetad of directly send the data of server send this data that declare it here*/
-			.map(data => {
-				return new Grocery(data.id, name, data.date, description, number);
-			})
+			/* 	.map(data => {
+					return new Grocery(data.id, name, data.date, description, number);
+				}) */
 			.catch(this.handleErrors);
 
 	}

@@ -18,9 +18,7 @@ declare var android;
 
 
 export class GroceryAddUpdateComponent implements OnInit {
-	name = "";
-	description = "";
-	number: number;
+
 	grocery: Grocery;
 
 	constructor(private groceryService: GroceryService, private router: Router, private location: Location, private activeRoute: ActivatedRoute) {
@@ -30,9 +28,10 @@ export class GroceryAddUpdateComponent implements OnInit {
 	ngOnInit() {
 		this.activeRoute.params.subscribe(params => {
 			const id: string = params['id'];
-			if (id) {
+			if (id !== null && id !== undefined && id.trim() !== "") {
 				this.groceryService.get(id).subscribe(groceryobject => {
 					this.grocery = groceryobject;
+					console.log("for grocery object!");
 				})
 			} else {
 				this.grocery = new Grocery(null, "", null, "", null);
@@ -42,7 +41,7 @@ export class GroceryAddUpdateComponent implements OnInit {
 
 	}
 	add() {
-		if (this.name.trim() === "") {
+		if (this.grocery.name.trim() === "") {
 			alert("Enter a grocery item");
 			return;
 		}
@@ -52,7 +51,7 @@ export class GroceryAddUpdateComponent implements OnInit {
 			textField.dismissSoftInput(); */
 
 
-		this.groceryService.add(this.name, this.description, this.number)
+		this.groceryService.add(this.grocery)
 			.subscribe(
 				groceryObject /* The object that server returned to the client */ => {
 					// const item of this.groceryList
@@ -81,12 +80,10 @@ export class GroceryAddUpdateComponent implements OnInit {
 		this.location.back();
 	}
 	clean() {
-		this.name = "";
-		this.description = "";
-		this.number = Number();
+		this.grocery = new Grocery(null, "", null, "", null)
 	}
 	update() {
-		this.groceryService.update(this.name, this.description, this.number).subscribe(groceryobject => {
+		this.groceryService.update(this.grocery).subscribe(groceryobject => {
 
 			if (platform.isAndroid)
 				android.widget.Toast.makeText(app.android.context, "item successfully added", 0).show();
