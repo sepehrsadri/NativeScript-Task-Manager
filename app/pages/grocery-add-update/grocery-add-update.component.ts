@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as app from "application";
@@ -7,6 +8,7 @@ import { GroceryService } from '~/shared/grocery/grocery.service';
 
 declare var android;
 @Component({
+
 	moduleId: module.id,
 	selector: 'grocery-add-update',
 	templateUrl: './grocery-add-update.component.xml',
@@ -19,7 +21,7 @@ export class GroceryAddUpdateComponent implements OnInit {
 	description = "";
 	number: number;
 
-	constructor(private groceryService: GroceryService, private router: Router) {
+	constructor(private groceryService: GroceryService, private router: Router, private location: Location) {
 
 	}
 
@@ -61,7 +63,11 @@ export class GroceryAddUpdateComponent implements OnInit {
 	clean() {
 		this.grocery = "";
 		this.description = "";
-		this.number = Number("");
+		this.number = Number();
+
+	}
+	back() {
+		this.location.back();
 
 	}
 }
