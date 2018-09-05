@@ -7,7 +7,7 @@
 	<TextField hint="Description" [(ngModel)]="description" autocorrect="false" autocapitalizationType="none"></TextField>
 	<TextField hint="Number" [(ngModel)]="number" (returnPress)="add()" autocorrect="false" autocapitalizationType="none"></TextField>
 
-	<Button [text]="Done" (tap)="add()" class="submit-button"></Button>
+	<Button text="Done" (tap)="add()" class="submit-button"></Button>
 
 
 

@@ -9,8 +9,22 @@
 		<ActionItem android.position="popup" text="About"></ActionItem>
 	</ActionBar>
 </Page.actionBar>
+<!-- {{use for inserting some angular object}} -->
 <StackLayout>
-	<!-- {{use for inserting some angular object}} -->
-	<Label class="grocery-details" text="{{grocery.name}}"></Label>
 
+	<Label text="Name : "></Label>
+	<Label text="{{grocery.name}}"></Label>
+	<Label text= "ID : "></Label>
+	<Label text="{{grocery.id}}"></Label>
+	<Label text= "Description : "></Label>
+	<Label text="{{grocery.description}}"></Label>
+	<Label text= "Number : "></Label>
+	<Label text="{{grocery.number}}"></Label>
+	<Label text= "Date : "></Label>
+	<Label text="{{grocery.date}}"></Label>
+	<Button text="Delete" (tap)="delete(grocery.id)"></Button>
+	<Button text="Edit" (tap)="edit()"></Button>
 </StackLayout>
+
+
+

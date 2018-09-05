@@ -19,7 +19,7 @@
 		<!-- <PullToRefresh (refresh)="refreshList($event)"> -->
 		<ListView [items]="groceryList" row="1" class="small-spacing" [class.visible]="listLoaded">
 			<ng-template let-item="item">
-				<Label [text]="item.name" class="medium-spacing" (tap)="selectItem(item.id)"></Label>
+				<Label [text]="item.name" class="medium-spacing" (Tap)="selectItem(item.id)"></Label>
 			</ng-template>
 		</ListView>
 
