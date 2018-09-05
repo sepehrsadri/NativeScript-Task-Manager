@@ -2,12 +2,12 @@
 	<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" class="back-icon" (tap)="back()"></NavigationButton>
 </ActionBar>
 <StackLayout>
-	<TextField hint="Item Name" [(ngModel)]="grocery" autocorrect="false" autocapitalizationType="none"></TextField>
+	<TextField hint="Item Name" [(ngModel)]="name" autocorrect="false" autocapitalizationType="none"></TextField>
 
 	<TextField hint="Description" [(ngModel)]="description" autocorrect="false" autocapitalizationType="none"></TextField>
 	<TextField hint="Number" [(ngModel)]="number" (returnPress)="add()" autocorrect="false" autocapitalizationType="none"></TextField>
 
-	<Button text="Done" (tap)="add()" class="submit-button"></Button>
+	<Button text="Done" (tap)="done()" class="submit-button"></Button>
 
 
 

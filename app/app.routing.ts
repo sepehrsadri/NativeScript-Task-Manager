@@ -8,7 +8,7 @@ export const routes = [
 	{ path: "list", component: ListComponent },
 	{ path: "grocery/:id", component: GroceryDetailsComponent },
 	{ path: "add", component: GroceryAddUpdateComponent },
-	{ path: "grocery/:id", component: GroceryAddUpdateComponent }
+	{ path: "update/:id", component: GroceryAddUpdateComponent }
 ];
 
 export const navigatableComponents = [

@@ -82,6 +82,20 @@ export class GroceryService {
 			}) */
 			.catch(this.handleErrors);
 	}
+	update(name: string, description: string, number: number) {
+		return this.http.put(
+			this.baseUrl,
+			JSON.stringify({ name: name, description: description, number: number }),
+			{ headers: this.getCommonHeaders() }
+		)
+			.map(res => res.json())
+			/*map first convert to json then insetad of directly send the data of server send this data that declare it here*/
+			.map(data => {
+				return new Grocery(data.id, name, data.date, description, number);
+			})
+			.catch(this.handleErrors);
+
+	}
 
 	// return fetch(this.baseUrl + id, {
 	// 	method: 'delete'

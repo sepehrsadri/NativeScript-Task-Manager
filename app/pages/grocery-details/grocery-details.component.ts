@@ -72,7 +72,13 @@ export class GroceryDetailsComponent implements OnInit {
 		});
 	}
 
-	edit() {
+	edit(id: string) {
+		// this.router.navigate(["/grocery/:id"]);0
+		this.router.navigate(["/update", id]);
+		// this._router.navigate(["/details", selectedItem.id]);
+
 
 	}
+
 }
+

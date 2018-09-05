@@ -23,7 +23,7 @@
 	<Label text= "Date : "></Label>
 	<Label text="{{grocery.date}}"></Label>
 	<Button text="Delete" (tap)="delete(grocery.id)"></Button>
-	<Button text="Edit" (tap)="edit()"></Button>
+	<Button text="Edit" (tap)="edit(grocery.id)"></Button>
 </StackLayout>
 
 
