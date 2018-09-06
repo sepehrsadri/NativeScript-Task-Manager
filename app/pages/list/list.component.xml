@@ -12,8 +12,9 @@
 
 		<GridLayout row="0" columns="*, auto">
 			<!-- <TextField #groceryTextField [(ngModel)]="grocery" (returnPress)="add()" hint="Enter a grocery item" col="0"></TextField> -->
-			<!-- <Image src="res://add" col="1"></Image> -->
-			<SearchBar hint="Search for items" class="search-bar" [text]="searchPhrase" textFieldHintColor="white"></SearchBar>
+
+			<SearchBar hint="Search for items" [(ngModel)]="search" (clear)="clear()" col="0" (submit)="submit()" class="search-bar" textFieldHintColor="white"></SearchBar>
+			<Button col="1" (tap)="submit()"></Button>
 			<!-- (textChange)="onTextChanged($event)" (submit)="onSubmit($event)" -->
 		</GridLayout>
 

@@ -8,6 +8,7 @@ import { Grocery } from "../../shared/grocery/grocery";
 
 
 
+
 declare var android;
 
 registerElement("PullToRefresh", () => require("nativescript-pulltorefresh").PullToRefresh);
@@ -22,6 +23,7 @@ registerElement("PullToRefresh", () => require("nativescript-pulltorefresh").Pul
 export class ListComponent implements OnInit {
 	isLoading: boolean = true;
 	listLoaded: boolean = false;
+	search: string = "";
 
 
 	grocery = "";
@@ -74,6 +76,23 @@ export class ListComponent implements OnInit {
 			.trim()
 		SocialShare.shareText(listString);
 	}
+	public clear() {
+		this.search = "";
+	}
+	public submit() {
+		if (this.search.trim() === "") {
+			alert("please enter something!");
+		}
+		else {
+			for (var i = 0; i < this.groceryList.length; i++) {
 
+				if (this.groceryList[i].name.localeCompare(this.search.toString()) == 0) {
+					alert("we find it !" + this.search);
+				} else {
+					alert("Sorry we can't find your item");
+				}
 
+			}
+		}
+	}
 }
