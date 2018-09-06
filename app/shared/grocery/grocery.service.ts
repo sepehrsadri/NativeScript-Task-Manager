@@ -11,7 +11,9 @@ import { Grocery } from "~/shared/grocery/grocery";
 
 export class GroceryService {
 	// baseUrl = Config.apiUrl + "appdata/" + Config.appKey + "/Groceries";
-	baseUrl = "http://192.168.1.38:8081/" + 'grocery'
+	baseWorkUrl = "http://192.168.1.38:8081/grocery";
+	baseHomeUrl = "http://192.168.43.243:8081/grocery/";
+	baseUrl = this.baseHomeUrl;
 
 	constructor(private http: Http, private HTtp: HttpClient) { }
 
@@ -64,7 +66,6 @@ export class GroceryService {
 	}
 
 	delete(id: string): Observable<any> {
-		this.baseUrl = "http:/192.168.1.38:8081/grocery/";
 		console.log(this.baseUrl + id);
 		return this.http.delete(this.baseUrl + id)
 			.map((id) => {
@@ -74,7 +75,6 @@ export class GroceryService {
 			.catch(this.handleErrors);
 	}
 	get(id: string): Observable<any> {
-		this.baseUrl = "http://192.168.1.38:8081/grocery/";
 		return this.http.get(this.baseUrl + id)
 			.map(res => res.json())
 			/* .map(data => {
