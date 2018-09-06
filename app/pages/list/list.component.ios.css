@@ -1,8 +1,9 @@
 TextField {
   border-width: 0;
 }
-.add-bar{
+.search-bar{
 	margin-top: 20;
+	color:white ;
 }
 .back-icon{
 	color: blue;

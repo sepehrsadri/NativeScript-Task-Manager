@@ -67,41 +67,6 @@ export class ListComponent implements OnInit {
 			pullRefresh.refreshing = false;
 		}, 1000);
 	}
-
-	/* 	delete(id: string) {
-
-			let options = {
-				title: "Alert",
-				message: "Do you want to delete this item?",
-				okButtonText: "Yes",
-				cancelButtonText: "No",
-			};
-
-			confirm(options).then((result: boolean) => {
-				if (result) {
-					var index = this.groceryList.findIndex(e => e.id == id);
-					/* function(Grocery e):boolean {
-						return e.id==id;
-						it's like a for loop that chek for each item and if it was true take back the number of find index that used!
-					}
-					if (index > -1)
-						this.groceryListService.delete(id)
-							.subscribe(
-								() => {
-									this.groceryList.splice(index, 1);
-									alert("your selected item delete!");
-								},
-								(err) => {
-									console.log(err);
-									alert("sorry your item isn't deleted");
-								}
-							)
-					// this.groceryList.splice(index, 1);
-
-				}
-			});
-		} */
-
 	share() {
 		let listString = this.groceryList
 			.map(grocery => grocery.name)
@@ -109,5 +74,6 @@ export class ListComponent implements OnInit {
 			.trim()
 		SocialShare.shareText(listString);
 	}
+
 
 }
