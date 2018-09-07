@@ -1,8 +1,10 @@
 import { Location } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from '@angular/router';
+import * as app from "application";
 import { registerElement } from "nativescript-angular/element-registry";
 import * as SocialShare from "nativescript-social-share";
+import * as platform from "platform";
 import { GroceryService } from "~/shared/grocery/grocery.service";
 import { Grocery } from "../../shared/grocery/grocery";
 
@@ -85,14 +87,28 @@ export class ListComponent implements OnInit {
 		}
 		else {
 			for (var i = 0; i < this.groceryList.length; i++) {
-
-				if (this.groceryList[i].name.localeCompare(this.search.toString()) == 0) {
-					alert("we find it !" + this.search);
+				if (this.groceryList[i].name.localeCompare(this.search) == 0) {
+					if (platform.isAndroid)
+						android.widget.Toast.makeText(app.android.context, "found it!", 0).show();
+					this.arrayMove(this.groceryList, i, 0);
+					break;
 				} else {
-					alert("Sorry we can't find your item");
+					if (i == this.groceryList.length - 1) {
+						alert("Sorry,can't find your item!");
+						break;
+					}
 				}
 
 			}
 		}
 	}
+	arrayMove(arr, oldIndex, newIndex) {
+		if (newIndex >= arr.length) {
+			var k = newIndex - arr.length + 1;
+			while (k--) {
+				arr.push(undefined);
+			}
+		}
+		arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
+	};
 }
