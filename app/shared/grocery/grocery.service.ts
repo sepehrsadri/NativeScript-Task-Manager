@@ -52,6 +52,7 @@ export class GroceryService {
 		return Observable.throw(error);
 	}
 	add(item: Grocery) {
+		this.baseUrl = "http://192.168.1.40:8081/grocery/";
 		return this.http.post(
 			this.baseUrl,
 			JSON.stringify(item),
@@ -75,6 +76,7 @@ export class GroceryService {
 			.catch(this.handleErrors);
 	}
 	get(id: string): Observable<any> {
+		this.baseUrl = "http://192.168.1.40:8081/grocery/";
 		return this.http.get(this.baseUrl + id)
 			.map(res => res.json())
 			/* .map(data => {
@@ -83,6 +85,7 @@ export class GroceryService {
 			.catch(this.handleErrors);
 	}
 	update(item: Grocery): Observable<any> {
+		this.baseUrl = "http://192.168.1.40:8081/grocery/";
 		return this.http.put(
 			this.baseUrl,
 			JSON.stringify(item)
