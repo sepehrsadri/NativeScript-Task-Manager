@@ -52,7 +52,7 @@ export class GroceryService {
 		return Observable.throw(error);
 	}
 	add(item: Grocery) {
-		this.baseUrl = "http://192.168.1.40:8081/grocery/";
+		this.baseUrl = "http://192.168.1.40:8081/grocery";
 		return this.http.post(
 			this.baseUrl,
 			JSON.stringify(item),
@@ -60,9 +60,9 @@ export class GroceryService {
 		)
 			.map(res => res.json())
 			/*map first convert to json then insetad of directly send the data of server send this data that declare it here*/
-			.map(data => {
+			/* .map(data => {
 				return new Grocery(data.id, name, data.date, data.description, data.number);
-			})
+			}) */
 			.catch(this.handleErrors);
 	}
 
@@ -88,8 +88,10 @@ export class GroceryService {
 		this.baseUrl = "http://192.168.1.40:8081/grocery/";
 		return this.http.put(
 			this.baseUrl,
-			JSON.stringify(item)
+			JSON.stringify(item),
+			{ headers: this.getCommonHeaders() }
 		)
+
 			.map(res => res.json())
 			/*map first convert to json then insetad of directly send the data of server send this data that declare it here*/
 			/* 	.map(data => {
