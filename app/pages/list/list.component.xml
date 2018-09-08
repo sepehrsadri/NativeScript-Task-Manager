@@ -13,12 +13,11 @@
 		<GridLayout row="0" columns="*, auto">
 			<!-- <TextField #groceryTextField [(ngModel)]="grocery" (returnPress)="add()" hint="Enter a grocery item" col="0"></TextField> -->
 
-			<SearchBar hint="Search for items" [(ngModel)]="search" (clear)="clear()" col="0" (submit)="submit()" class="search-bar" textFieldHintColor="white"></SearchBar>
-			<Button col="1" (tap)="submit()"></Button>
+			<SearchBar hint="Search for items" [(ngModel)]="search" (textChange)="onTextChanged()" (clear)="clear()" (submit)="submit()" class="search-bar" textFieldHintColor="white"></SearchBar>
 			<!-- (textChange)="onTextChanged($event)" (submit)="onSubmit($event)" -->
 		</GridLayout>
 
-		<ListView [items]="groceryList" row="1" class="small-spacing" [class.visible]="listLoaded">
+		<ListView [items]="filterList" row="1" class="small-spacing" [class.visible]="listLoaded">
 			<ng-template let-item="item">
 				<Label [text]="item.name" class="medium-spacing" (Tap)="selectItem(item.id)"></Label>
 			</ng-template>

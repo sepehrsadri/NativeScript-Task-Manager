@@ -1,10 +1,8 @@
 import { Location } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from '@angular/router';
-import * as app from "application";
 import { registerElement } from "nativescript-angular/element-registry";
 import * as SocialShare from "nativescript-social-share";
-import * as platform from "platform";
 import { GroceryService } from "~/shared/grocery/grocery.service";
 import { Grocery } from "../../shared/grocery/grocery";
 
@@ -31,6 +29,7 @@ export class ListComponent implements OnInit {
 	grocery = "";
 	@ViewChild('groceryTextField') groceryTextField: ElementRef;
 	public groceryList: Array<Grocery> = [];
+	public filterList: Array<Grocery> = [];
 	ngOnInit() {
 		this.loadData();
 	}
@@ -55,9 +54,8 @@ export class ListComponent implements OnInit {
 		this.isLoading = true;
 		this.groceryService.load()
 			.subscribe(loadedGroceries => {
-				this.groceryList = loadedGroceries;
-				this.isLoading = false;
-				this.listLoaded = true;
+				this.updateList(loadedGroceries);
+
 			});
 	}
 
@@ -80,13 +78,15 @@ export class ListComponent implements OnInit {
 	}
 	public clear() {
 		this.search = "";
+		this.filterList = this.groceryList;
 	}
 	public submit() {
 		if (this.search.trim() === "") {
-			alert("please enter something!");
+			this.filterList = this.groceryList;
 		}
 		else {
-			for (var i = 0; i < this.groceryList.length; i++) {
+			this.filterList = this.groceryList.filter(g => g.name.toLowerCase().includes(this.search.toLowerCase()));
+			/* for (var i = 0; i < this.groceryList.length; i++) {
 				if (this.groceryList[i].name.localeCompare(this.search) == 0) {
 					if (platform.isAndroid)
 						android.widget.Toast.makeText(app.android.context, "found it!", 0).show();
@@ -99,16 +99,26 @@ export class ListComponent implements OnInit {
 					}
 				}
 
-			}
+			} */
 		}
 	}
-	arrayMove(arr, oldIndex, newIndex) {
-		if (newIndex >= arr.length) {
-			var k = newIndex - arr.length + 1;
-			while (k--) {
-				arr.push(undefined);
+	public updateList(arr: Array<Grocery>) {
+		this.groceryList = arr;
+		this.isLoading = false;
+		this.listLoaded = true;
+		this.submit();
+	}
+	onTextChanged() {
+		if (this.search.length >= 2)
+			this.submit();
+	}
+	/* 	arrayMove(arr, oldIndex, newIndex) {
+			if (newIndex >= arr.length) {
+				var k = newIndex - arr.length + 1;
+				while (k--) {
+					arr.push(undefined);
+				}
 			}
-		}
-		arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
-	};
+			arr.splice(newIndex, 0, arr.splice(oldIndex, 1)[0]);
+		}; */
 }
