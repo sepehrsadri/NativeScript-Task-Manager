@@ -20,8 +20,11 @@ declare var android;
 export class GroceryAddUpdateComponent implements OnInit {
 
 	grocery: Grocery;
+	groceryCompare: Grocery;
 
-	constructor(private groceryService: GroceryService, private router: Router, private location: Location, private activeRoute: ActivatedRoute) {
+
+	constructor(private groceryService: GroceryService,
+		private router: Router, private location: Location, private activeRoute: ActivatedRoute) {
 
 	}
 
@@ -31,6 +34,7 @@ export class GroceryAddUpdateComponent implements OnInit {
 			if (id !== null && id !== undefined && id.trim() !== "") {
 				this.groceryService.get(id).subscribe(groceryobject => {
 					this.grocery = groceryobject;
+					this.groceryCompare = new Grocery(this.grocery.id, this.grocery.name, this.grocery.date, this.grocery.description, this.grocery.number);
 					console.log("for grocery object!");
 				})
 			} else {
@@ -83,23 +87,29 @@ export class GroceryAddUpdateComponent implements OnInit {
 		this.grocery = new Grocery(null, "", null, "", null)
 	}
 	update() {
-		this.groceryService.update(this.grocery).subscribe(groceryobject => {
+		if (this.groceryCompare.name.toLowerCase().localeCompare(this.grocery.name.toLowerCase()) == 0 &&
+			this.groceryCompare.description.toLowerCase().localeCompare(this.grocery.description.toLowerCase()) == 0 &&
+			(this.groceryCompare.number == this.grocery.number) == true)
+			alert("No changes, change something!");
+		else {
+			this.groceryService.update(this.grocery).subscribe(groceryobject => {
 
-			if (platform.isAndroid)
-				android.widget.Toast.makeText(app.android.context, "item successfully added", 0).show();
-			this.router.navigate(["/list"]);
+				if (platform.isAndroid)
+					android.widget.Toast.makeText(app.android.context, "item successfully updated", 0).show();
+				this.router.navigate(["/list"]);
 
 
-		},
-			() => {
-				alert({
-					message: "An error occurred while adding an item to your list.",
-					okButtonText: "OK"
-				});
-				this.clean();
-			}
+			},
+				() => {
+					alert({
+						message: "An error occurred while adding an item to your list.",
+						okButtonText: "OK"
+					});
+					this.clean();
+				}
 
-		)
+			)
+		}
 
 	}
 }
