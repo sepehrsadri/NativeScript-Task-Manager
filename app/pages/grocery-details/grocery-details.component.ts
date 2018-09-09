@@ -2,8 +2,10 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { confirm } from "ui/dialogs";
+import { Page } from 'ui/page';
 import { Grocery } from '~/shared/grocery/grocery';
 import { GroceryService } from '~/shared/grocery/grocery.service';
+
 
 
 
@@ -17,13 +19,14 @@ import { GroceryService } from '~/shared/grocery/grocery.service';
 export class GroceryDetailsComponent implements OnInit {
 	id: string;
 	grocery: Grocery;
-	constructor(private activeRoute: ActivatedRoute, private groceryService: GroceryService, private location: Location, private router: Router) {
+	constructor(private page: Page, private activeRoute: ActivatedRoute, private groceryService: GroceryService, private location: Location, private router: Router) {
 		this.activeRoute.params.subscribe(params => this.id = params['id']);
 		this.grocery = new Grocery(null, "", null, "", null);
 
 	}
 
 	ngOnInit() {
+		this.page.backgroundColor = "#b7b7b7";
 
 		this.groceryService.get(this.id)
 			.subscribe(groceryObject => {

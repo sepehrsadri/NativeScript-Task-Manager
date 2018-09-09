@@ -10,21 +10,19 @@
 	</ActionBar>
 </Page.actionBar>
 <!-- {{use for inserting some angular object}} -->
+<GridLayout rows=<GridLayout rows="auto, auto, auto, auto, auto" columns="*, *">
+	<Label text="Name : " row="0" col="0" class="left"></Label>
+	<Label text="{{grocery.name}}" row="0" col="1" class="right"></Label>
+	<Label text= "ID : " row="1" col="0" class="left"></Label>
+	<Label text="{{grocery.id}}" row="1" col="1" class="right"></Label>
+	<Label text= "Description : " row="2" col="0" class="left"></Label>
+	<Label text="{{grocery.description}}" row="2" col="1" class="right"></Label>
+	<Label text= "Number : " row="3" col="0" class="left"></Label>
+	<Label text="{{grocery.number}}" row="3" col="1" class="right"></Label>
+	<Label text= "Date : " row="4" col="0" class="left"></Label>
+	<Label text="{{grocery.date}}" row="4" col="1" class="right"></Label>
+</GridLayout>>
 <StackLayout>
-
-	<Label text="Name : "></Label>
-	<Label text="{{grocery.name}}"></Label>
-	<Label text= "ID : "></Label>
-	<Label text="{{grocery.id}}"></Label>
-	<Label text= "Description : "></Label>
-	<Label text="{{grocery.description}}"></Label>
-	<Label text= "Number : "></Label>
-	<Label text="{{grocery.number}}"></Label>
-	<Label text= "Date : "></Label>
-	<Label text="{{grocery.date}}"></Label>
 	<Button text="Delete" (tap)="delete(grocery.id)"></Button>
 	<Button text="Edit" (tap)="edit(grocery.id)"></Button>
 </StackLayout>
-
-
-

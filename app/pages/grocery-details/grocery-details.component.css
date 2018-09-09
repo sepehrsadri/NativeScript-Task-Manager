@@ -1,12 +1,29 @@
 ActionBar{
-	background-color: black;
+	background-color: #434343;
 	color: white;
 	padding-top: 24;
 }
 StackLayout{
-	margin-left: 10;
-	margin-top: 10;
-	margin-bottom: 10;
-	margin-right: 10;
+	margin-top: 200;
+	height: 100;
 }
+
+Button{
+	padding: 10;
+	background-color: black;
+	color: #bde0e9;
+}
+GridLayout{
+	padding: 15;
+}
+.left{
+	font-size: 20;
+	color: black;
+	padding-top: 20;
+}.right{
+	padding-top: 20;
+	font-size: 20;
+	color: #4a86e8;
+}
+
 

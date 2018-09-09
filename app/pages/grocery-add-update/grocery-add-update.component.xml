@@ -5,6 +5,7 @@
 	<StackLayout class="body">
 		<ng-container *ngIf="grocery">
 			<!--Insted of using the bottom syntax for three texField use *ngIf [ngModel]="grocery?.name" (ngModelChange)="grocery.name = $event"  -->
+			<!-- style.placeholderColor="white">>  for changing hint color-->
 			<TextField hint="Item Name" style.placeholderColor="#bde0e9" [(ngModel)]="grocery.name" autocorrect="false" autocapitalizationType="none"></TextField>
 
 			<TextField hint="Description" style.placeholderColor="#bde0e9" [(ngModel)]="grocery.description" autocorrect="false" autocapitalizationType="none"></TextField>
