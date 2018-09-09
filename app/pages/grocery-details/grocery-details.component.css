@@ -1,6 +1,7 @@
 ActionBar{
 	background-color: black;
 	color: white;
+	padding-top: 24;
 }
 StackLayout{
 	margin-left: 10;

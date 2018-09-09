@@ -1,17 +1,24 @@
 .submit-button {
-	background-color: #CB1D00;
+	background-color: black;
 	color: white;
 	margin-top: 20;
 	line-height: 1em;
 	padding: 0px;
   }
   Page {
-	background-color: white;
 	font-size: 15;
 	padding: 50;
+	background-color: #434343;
   }
   ActionBar{
-	background-color: black;
+	background-color: #0202be;
 	color: white;
+	padding-top: 24;
 }
+.body{
+	color: white;
+	font-size: 20;
+}
+
+
 

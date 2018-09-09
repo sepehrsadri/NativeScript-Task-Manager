@@ -8,6 +8,7 @@ import { GroceryService } from '~/shared/grocery/grocery.service';
 
 
 
+
 declare var android;
 @Component({
 
@@ -22,6 +23,7 @@ export class GroceryAddUpdateComponent implements OnInit {
 
 	grocery: Grocery;
 	groceryCompare: Grocery;
+
 	/*for grocery compare this syntax doesn't work >> this.groceryCompare = this.grocery
 	because of different between call by refrence & call by value , above syntax only point to a part of a home of
 	memory but we need another part of memory to compare to our grocery so we need the syntax that used on ngOnInit*/

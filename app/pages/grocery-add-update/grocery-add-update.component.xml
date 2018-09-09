@@ -1,14 +1,16 @@
-<ActionBar title="Groceries">
-	<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" class="back-icon" (tap)="back()"></NavigationButton>
-</ActionBar>
-<StackLayout>
-	<ng-container *ngIf="grocery">
-		<!--Insted of using the bottom syntax for three texField use *ngIf [ngModel]="grocery?.name" (ngModelChange)="grocery.name = $event"  -->
-		<TextField hint="Item Name" [(ngModel)]="grocery.name" autocorrect="false" autocapitalizationType="none"></TextField>
+<Page>
+	<ActionBar title="Groceries">
+		<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" class="back-icon" (tap)="back()"></NavigationButton>
+	</ActionBar>
+	<StackLayout class="body">
+		<ng-container *ngIf="grocery">
+			<!--Insted of using the bottom syntax for three texField use *ngIf [ngModel]="grocery?.name" (ngModelChange)="grocery.name = $event"  -->
+			<TextField hint="Item Name" style.placeholderColor="#bde0e9" [(ngModel)]="grocery.name" autocorrect="false" autocapitalizationType="none"></TextField>
 
-		<TextField hint="Description" [(ngModel)]="grocery.description" autocorrect="false" autocapitalizationType="none"></TextField>
-		<TextField hint="Number" [(ngModel)]="grocery.number" (returnPress)="add()" autocorrect="false" autocapitalizationType="none"></TextField>
-	</ng-container>
-	<Button text="Done" (tap)="done()" class="submit-button"></Button>
+			<TextField hint="Description" style.placeholderColor="#bde0e9" [(ngModel)]="grocery.description" autocorrect="false" autocapitalizationType="none"></TextField>
+			<TextField hint="Number" style.placeholderColor="#bde0e9" [(ngModel)]="grocery.number" (returnPress)="add()" autocorrect="false" autocapitalizationType="none"></TextField>
+		</ng-container>
+		<Button text="Done" (tap)="done()" class="submit-button"></Button>
 
-</StackLayout>
+	</StackLayout>
+</Page>
