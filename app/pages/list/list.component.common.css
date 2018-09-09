@@ -1,7 +1,9 @@
+Page{
+	background-color: #b7b7b7;
+}
 .search-bar {
-  background-color: #CB1D00;
+background-color: #4a86e8;
   padding: 5 10;
-  color:white;
 }
 .add-bar Image {
   height: 15;
@@ -29,6 +31,7 @@ ListView {
 	  color: white;
   }
 .small-spacing{
-	background-color:#fff000;
-	color: #3489db
+	background-color:#b7b7b7;
+	color: #1b1d1f;
+	font-size: 20;
 }

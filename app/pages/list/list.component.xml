@@ -1,34 +1,34 @@
+<Page>
+	<ActionBar title="Groceries">
 
-<ActionBar title="Groceries">
+		<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" class="back-icon" (tap)="back()"></NavigationButton>
+		<ActionItem text="Share" (tap)="share()" android.systemIcon="ic_menu_share_holo_dark" ios.systemIcon="9" ios.position="left" android.positon="actionBar">
+		</ActionItem>
+		<ActionItem text="add" (tap)="add()" ios.systemIcon="16" ios.position="right" android.positon="actionBar" android.systemIcon="ic_menu_add">
+		</ActionItem>
+	</ActionBar>
+	<PullToRefresh (refresh)="refreshList($event)">
+		<GridLayout rows="auto, *">
 
-	<NavigationButton text="Go Back" android.systemIcon="ic_menu_back" class="back-icon" (tap)="back()"></NavigationButton>
-	<ActionItem text="Share" (tap)="share()" android.systemIcon="ic_menu_share_holo_dark" ios.systemIcon="9" ios.position="left" android.positon="actionBar">
-	</ActionItem>
-	<ActionItem text="add" (tap)="add()" ios.systemIcon="16" ios.position="right" android.positon="actionBar" android.systemIcon="ic_menu_add">
-	</ActionItem>
-</ActionBar>
-<PullToRefresh (refresh)="refreshList($event)">
-	<GridLayout rows="auto, *">
+			<GridLayout row="0" columns="*, auto">
+				<!-- <TextField #groceryTextField [(ngModel)]="grocery" (returnPress)="add()" hint="Enter a grocery item" col="0"></TextField> -->
 
-		<GridLayout row="0" columns="*, auto">
-			<!-- <TextField #groceryTextField [(ngModel)]="grocery" (returnPress)="add()" hint="Enter a grocery item" col="0"></TextField> -->
+				<SearchBar hint="Search for items" [(ngModel)]="search" (textChange)="onTextChanged()" (clear)="clear()" (submit)="submit()" class="search-bar" textFieldHintColor="white"></SearchBar>
+				<!-- (textChange)="onTextChanged($event)" (submit)="onSubmit($event)" -->
+			</GridLayout>
 
-			<SearchBar hint="Search for items" [(ngModel)]="search" (textChange)="onTextChanged()" (clear)="clear()" (submit)="submit()" class="search-bar" textFieldHintColor="white"></SearchBar>
-			<!-- (textChange)="onTextChanged($event)" (submit)="onSubmit($event)" -->
-		</GridLayout>
-
-		<ListView [items]="filterList" row="1" class="small-spacing" [class.visible]="listLoaded">
-			<!-- <ng-container *ngFor = "let item of filterList">
+			<ListView [items]="filterList" row="1" class="small-spacing" [class.visible]="listLoaded">
+				<!-- <ng-container *ngFor = "let item of filterList">
 				<Label [text]="item.name" class="medium-spacing" (Tap)="selectItem(item.id)"></Label>
 			</ng-container>
 			*ngFor do the same as ng-template let-item do! impelement a for for items -->
-			<ng-template let-item="item">
-				<Label [text]="item.name" class="medium-spacing" (Tap)="selectItem(item.id)"></Label>
-			</ng-template>
-		</ListView>
+				<ng-template let-item="item">
+					<Label [text]="item.name" class="medium-spacing" (Tap)="selectItem(item.id)"></Label>
+				</ng-template>
+			</ListView>
 
-		<ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
+			<ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" row="1" horizontalAlignment="center" verticalAlignment="center"></ActivityIndicator>
 
-	</GridLayout>
-</PullToRefresh>
-
+		</GridLayout>
+	</PullToRefresh>
+</Page>
