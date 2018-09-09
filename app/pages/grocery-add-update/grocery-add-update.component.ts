@@ -7,6 +7,7 @@ import { Grocery } from '~/shared/grocery/grocery';
 import { GroceryService } from '~/shared/grocery/grocery.service';
 
 
+
 declare var android;
 @Component({
 
@@ -21,6 +22,9 @@ export class GroceryAddUpdateComponent implements OnInit {
 
 	grocery: Grocery;
 	groceryCompare: Grocery;
+	/*for grocery compare this syntax doesn't work >> this.groceryCompare = this.grocery
+	because of different between call by refrence & call by value , above syntax only point to a part of a home of
+	memory but we need another part of memory to compare to our grocery so we need the syntax that used on ngOnInit*/
 
 
 	constructor(private groceryService: GroceryService,
@@ -64,12 +68,19 @@ export class GroceryAddUpdateComponent implements OnInit {
 					this.router.navigate(["/list"]);
 					this.clean();
 				},
-				() => {
-					alert({
-						message: "An error occurred while adding an item to your list.",
-						okButtonText: "OK"
-					});
-					this.clean();
+				(error) => {
+					if (error == 400) {
+						alert({
+							message: "you add similar item Failed!",
+							okButtonText: "OK"
+						});
+					} else {
+						alert({
+							message: "An error occurred while adding an item to your list.",
+							okButtonText: "OK"
+						});
+						this.clean();
+					}
 				}
 			)
 	}

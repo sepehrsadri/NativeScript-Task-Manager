@@ -4,6 +4,7 @@ import { Headers, Http, Response, URLSearchParams } from "@angular/http";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
+import { _throw } from 'rxjs/observable/throw';
 import { Config } from "~/shared/config";
 import { Grocery } from "~/shared/grocery/grocery";
 
@@ -11,9 +12,9 @@ import { Grocery } from "~/shared/grocery/grocery";
 
 export class GroceryService {
 	// baseUrl = Config.apiUrl + "appdata/" + Config.appKey + "/Groceries";
-	baseWorkUrl = "http://192.168.1.40:8081/grocery";
+	baseWorkUrl = "http://192.168.1.40:8081/grocery/";
 	baseHomeUrl = "http://192.168.43.243:8081/grocery/";
-	baseUrl = this.baseWorkUrl;
+	baseUrl = this.baseHomeUrl;
 
 	constructor(private http: Http, private HTtp: HttpClient) { }
 
@@ -52,7 +53,7 @@ export class GroceryService {
 		return Observable.throw(error);
 	}
 	add(item: Grocery) {
-		this.baseUrl = "http://192.168.1.40:8081/grocery";
+		// this.baseUrl = "http://192.168.43.243:8081/grocery";
 		return this.http.post(
 			this.baseUrl,
 			JSON.stringify(item),
@@ -63,7 +64,13 @@ export class GroceryService {
 			/* .map(data => {
 				return new Grocery(data.id, name, data.date, data.description, data.number);
 			}) */
-			.catch(this.handleErrors);
+			.catch((error: any) => {
+				if (error.status === 400) {
+					return _throw(error.status);
+				} else {
+					this.handleErrors(error);
+				}
+			});
 	}
 
 	delete(id: string): Observable<any> {
@@ -76,7 +83,7 @@ export class GroceryService {
 			.catch(this.handleErrors);
 	}
 	get(id: string): Observable<any> {
-		this.baseUrl = "http://192.168.1.40:8081/grocery/";
+		// this.baseUrl = "http://192.168.43.243:8081/grocery/";
 		return this.http.get(this.baseUrl + id)
 			.map(res => res.json())
 			/* .map(data => {
@@ -85,7 +92,7 @@ export class GroceryService {
 			.catch(this.handleErrors);
 	}
 	update(item: Grocery): Observable<any> {
-		this.baseUrl = "http://192.168.1.40:8081/grocery/";
+		// this.baseUrl = "http://192.168.43.243:8081/grocery";
 		return this.http.put(
 			this.baseUrl,
 			JSON.stringify(item),
