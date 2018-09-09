@@ -25,7 +25,10 @@ export class LoginComponent implements OnInit {
 	@ViewChild("password") password: ElementRef;
 	ngOnInit() {
 		this.page.actionBarHidden = true;
-		this.page.backgroundImage = "res://bg_login";
+		this.page.backgroundImage = "res://my_bk";
+		this.page.style.backgroundRepeat = "no-repeat";
+		this.page.style.backgroundPosition = "center center";
+		this.page.style.backgroundSize = "cover";
 	}
 
 	constructor(private router: Router, private userService: UserService, private page: Page) {
