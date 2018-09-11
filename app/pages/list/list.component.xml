@@ -17,13 +17,13 @@
 				<!-- (textChange)="onTextChanged($event)" (submit)="onSubmit($event)" -->
 			</GridLayout>
 
-			<ListView [items]="filterList" row="1" class="small-spacing" [class.visible]="listLoaded">
+			<ListView [items]="filterList" row="1" class="list-view" [class.visible]="listLoaded">
 				<!-- <ng-container *ngFor = "let item of filterList">
 				<Label [text]="item.name" class="medium-spacing" (Tap)="selectItem(item.id)"></Label>
 			</ng-container>
 			*ngFor do the same as ng-template let-item do! impelement a for for items -->
 				<ng-template let-item="item">
-					<Label [text]="item.name" class="medium-spacing" (Tap)="selectItem(item.id)"></Label>
+					<Button [text]="item.name" class="button-list" (Tap)="selectItem(item.id)"></Button>
 				</ng-template>
 			</ListView>
 

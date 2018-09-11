@@ -20,10 +20,12 @@ GridLayout{
 	font-size: 20;
 	color: black;
 	padding-top: 20;
+	font-family: 'Courier New', Courier, monospace;
 }.right{
 	padding-top: 20;
 	font-size: 20;
 	color: #4a86e8;
+	font-family: 'Times New Roman', Times, serif;
 }
 
 

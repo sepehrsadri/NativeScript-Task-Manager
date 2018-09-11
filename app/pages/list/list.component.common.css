@@ -30,8 +30,13 @@ ListView {
 	  background-color: black;
 	  color: white;
   }
-.small-spacing{
+.list-view{
 	background-color:#b7b7b7;
 	color: #1b1d1f;
 	font-size: 20;
+}
+.button-list{
+	background-color: #b7b7b7;
+	font-family: 'Courier New', Courier, monospace;
+
 }
