@@ -8,13 +8,15 @@
 		</ActionItem>
 	</ActionBar>
 	<PullToRefresh (refresh)="refreshList($event)">
+
 		<GridLayout rows="auto, *">
 
-			<GridLayout row="0" columns="*, auto">
+			<GridLayout row="0">
 				<!-- <TextField #groceryTextField [(ngModel)]="grocery" (returnPress)="add()" hint="Enter a grocery item" col="0"></TextField> -->
 
 				<SearchBar hint="Search for items" [(ngModel)]="search" (textChange)="onTextChanged()" (clear)="clear()" (submit)="submit()" class="search-bar" textFieldHintColor="white"></SearchBar>
 				<!-- (textChange)="onTextChanged($event)" (submit)="onSubmit($event)" -->
+				<!-- <Button text="clear" col="1" (tap)="forClear()"></Button> -->
 			</GridLayout>
 
 			<ListView [items]="filterList" row="1" class="list-view" [class.visible]="listLoaded">

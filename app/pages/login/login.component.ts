@@ -1,14 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
-import { Color } from "color";
 import { RouterExtensions } from 'nativescript-angular/router';
-import { View } from "ui/core/view";
 import { Page } from 'ui/page';
 import { User } from '../../shared/user/user';
 import { UserService } from "../../shared/user/user.service";
 
 
-
+require("nativescript-localstorage");
 @Component({
 	moduleId: module.id,
 	providers: [UserService],
@@ -33,20 +31,19 @@ export class LoginComponent implements OnInit {
 	}
 
 	submit() {
-		if (this.isLoggingIn) {
-			// this.login();
+		// this.login();
+		localStorage.setItem("start", "0");
+		this.routerExtensions.navigate(["/list"]);
 
-			this.routerExtensions.navigate(["/list"], { clearHistory: true });
-		}
 	}
-	toggleDisplay() {
-		this.isLoggingIn = !this.isLoggingIn;
-		let view = <View>this.container.nativeElement;
-		view.animate({
-			backgroundColor: this.isLoggingIn ? new Color("#b7b7b7") : new Color("#272727"),
-			duration: 1000
-		});
-	}
+	/* 	toggleDisplay() {
+			this.isLoggingIn = !this.isLoggingIn;
+			let view = <View>this.container.nativeElement;
+			view.animate({
+				backgroundColor: this.isLoggingIn ? new Color("#b7b7b7") : new Color("#272727"),
+				duration: 1000
+			});
+		} */
 
 	ngAfterViewInit() {
 		console.log("afterinit");
