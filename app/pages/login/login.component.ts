@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { Color } from "color";
+import { RouterExtensions } from 'nativescript-angular/router';
 import { View } from "ui/core/view";
 import { Page } from 'ui/page';
 import { User } from '../../shared/user/user';
@@ -27,15 +28,15 @@ export class LoginComponent implements OnInit {
 		this.page.style.backgroundSize = "cover";
 	}
 
-	constructor(private router: Router, private userService: UserService, private page: Page) {
+	constructor(private routerExtensions: RouterExtensions, private router: Router, private userService: UserService, private page: Page) {
 		this.user = new User();
 	}
 
 	submit() {
-
 		if (this.isLoggingIn) {
 			// this.login();
-			this.router.navigate(["/list"]);
+
+			this.routerExtensions.navigate(["/list"], { clearHistory: true });
 		}
 	}
 	toggleDisplay() {
