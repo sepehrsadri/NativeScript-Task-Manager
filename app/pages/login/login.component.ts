@@ -8,7 +8,6 @@ import { UserService } from "../../shared/user/user.service";
 
 
 
-require("xnativescript-localstorage");
 @Component({
 	moduleId: module.id,
 	providers: [UserService],
@@ -36,7 +35,6 @@ export class LoginComponent implements OnInit {
 
 		if (this.isLoggingIn) {
 			// this.login();
-			localStorage.setItem("start", "1");
 			this.router.navigate(["/list"]);
 		}
 	}
