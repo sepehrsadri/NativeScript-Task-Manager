@@ -14,7 +14,7 @@ export class GroceryService {
 	// baseUrl = Config.apiUrl + "appdata/" + Config.appKey + "/Groceries";
 	baseWorkUrl = "http://192.168.1.40:8081/grocery/";
 	baseHomeUrl = "http://192.168.43.243:8081/grocery/";
-	baseUrl = this.baseWorkUrl;
+	baseUrl = this.baseHomeUrl;
 
 	constructor(private http: Http, private HTtp: HttpClient) { }
 
