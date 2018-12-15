@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 	constructor(private routerExtensions: RouterExtensions, private router: Router, private userService: UserService, private page: Page) {
 		this.user = new User();
 	}
-
+	//sbc
 	submit() {
 		// this.login();
 		localStorage.setItem("start", "0");
